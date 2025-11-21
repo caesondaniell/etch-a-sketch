@@ -1,0 +1,28 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    /* border: 1px dotted red; */
+}
+
+.container {
+    margin: 10px auto;
+    display: flex;
+    flex-flow: wrap;
+    max-width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+div > div {
+    border: 1px solid black;
+    flex: 1 0 auto;
+    width: 25%;
+    height: 25%;
+}
