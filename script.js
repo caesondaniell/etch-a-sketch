@@ -4,3 +4,9 @@ for (let i = 0; i < 256; i++) {
     container.appendChild(box);
 }
 
+const squares = document.querySelectorAll("div div");
+squares.forEach((square) => {
+    square.addEventListener("mouseenter", () => {
+        square.style.backgroundColor = "black";
+    })
+})
