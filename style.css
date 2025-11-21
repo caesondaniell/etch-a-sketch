@@ -15,14 +15,15 @@ html {
     margin: 10px auto;
     display: flex;
     flex-flow: wrap;
-    max-width: 500px;
-    height: 500px;
-    border: 1px solid black;
+    width: 80vw;
+    height: 80vw;
+    align-items: center;
+    justify-content: center;
+    border: 0.1em solid black;
 }
 
 div > div {
-    border: 1px solid black;
-    flex: 1 0 auto;
-    width: 25%;
-    height: 25%;
+    border: 0.1em solid black;
+    width: 6.25%;
+    height: 6.25%;
 }
