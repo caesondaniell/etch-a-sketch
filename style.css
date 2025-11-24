@@ -12,18 +12,20 @@ html {
 }
 
 .container {
-    margin: 10px auto;
+    margin: 24px auto;
     display: flex;
     flex-flow: wrap;
-    width: 80vw;
-    height: 80vw;
+    width: 80vh;
+    height: 80vh;
     align-items: center;
     justify-content: center;
-    border: 0.1em solid black;
+    border: 0.01em solid black;
 }
 
-div > div {
-    border: 0.1em solid black;
-    width: 6.25%;
-    height: 6.25%;
+.canvas-size {
+    display: block;
+    margin: 10px auto 0 auto;
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 3px 3px gray;
 }
