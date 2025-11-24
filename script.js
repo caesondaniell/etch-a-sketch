@@ -34,9 +34,16 @@ function drawGrid(dimension = 16) {
             height: ${(Math.floor((100/dimension) * 100)) / 100}%;`)
     });
     const squares = document.querySelectorAll("div div");
+    let shift = false;
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Shift") shift = true;
+    })
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "Shift") shift = false;
+    })
     squares.forEach((square) => {
         square.addEventListener("mouseenter", () => {
-            square.style.backgroundColor = colorSelector.value;
+            if (!shift) square.style.backgroundColor = colorSelector.value;
         })
     })
 }
