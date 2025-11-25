@@ -1,8 +1,8 @@
-drawGrid();
-
 const resize = document.querySelector(".grid-size");
 const clear = document.querySelector(".clear");
 const gridLines = document.querySelector(".grid-lines");
+
+createPalette();
 
 resize.addEventListener("click", () => {
     let dimensions;
@@ -11,7 +11,7 @@ resize.addEventListener("click", () => {
     else if (boxesPerSide < 8) dimensions = 8
     else if (boxesPerSide > 100) dimensions = 100
     else dimensions = boxesPerSide;
-    if (!(boxesPerSide === null)) drawGrid(dimensions);
+    if (!(boxesPerSide === null)) createPalette(dimensions);
 })
 
 clear.addEventListener("click", () => {
@@ -19,7 +19,7 @@ clear.addEventListener("click", () => {
     squares.forEach((square) => square.style.backgroundColor = "white")
 })
 
-gridLines.addEventListener("click", () => {
+function toggleGridLines() {
     gridLines.textContent = gridLines.textContent === "HIDE GRIDLINES" ?
     "SHOW GRIDLINES" :
     "HIDE GRIDLINES";
@@ -29,11 +29,16 @@ gridLines.addEventListener("click", () => {
             gridBox.style.border = ""
         } else gridBox.style.border = "0.01em solid black";
     })
-})
+}
 
-function drawGrid(dimension = 16) {
+gridLines.addEventListener("click", toggleGridLines);
+
+function createPalette(dimension = 16) {
     const container = document.querySelector(".container");
     const colorSelector = document.querySelector(".color-selector");
+    if (gridLines.textContent === "SHOW GRIDLINES") {
+        gridLines.textContent = "HIDE GRIDLINES"
+    }
     container.innerHTML = "";
     colorSelector.value = "#000000";
     for (let i = 0; i < (dimension * dimension); i++) {
