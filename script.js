@@ -2,6 +2,7 @@ drawGrid();
 
 const resize = document.querySelector(".grid-size");
 const clear = document.querySelector(".clear");
+const gridLines = document.querySelector(".grid-lines");
 
 resize.addEventListener("click", () => {
     let dimensions;
@@ -18,6 +19,18 @@ clear.addEventListener("click", () => {
     squares.forEach((square) => square.style.backgroundColor = "white")
 })
 
+gridLines.addEventListener("click", () => {
+    gridLines.textContent = gridLines.textContent === "HIDE GRIDLINES" ?
+    "SHOW GRIDLINES" :
+    "HIDE GRIDLINES";
+    const gridBoxes = document.querySelectorAll(".grid-box");
+    gridBoxes.forEach((gridBox) => {
+        if (gridBox.style.border === "0.01em solid black") {
+            gridBox.style.border = ""
+        } else gridBox.style.border = "0.01em solid black";
+    })
+})
+
 function drawGrid(dimension = 16) {
     const container = document.querySelector(".container");
     const colorSelector = document.querySelector(".color-selector");
@@ -25,15 +38,15 @@ function drawGrid(dimension = 16) {
     colorSelector.value = "#000000";
     for (let i = 0; i < (dimension * dimension); i++) {
         const box = document.createElement("div");
+        box.classList.add("grid-box");
         container.appendChild(box);
     }
-    const boxDimensions = document.querySelectorAll("div div");
-    boxDimensions.forEach((box) => {
-        box.setAttribute("style", `border: 0.01em solid black; 
+    const gridBoxes = document.querySelectorAll(".grid-box");
+    gridBoxes.forEach((gridBox) => {
+        gridBox.setAttribute("style", `border: 0.01em solid black; 
             width: ${(Math.floor((100/dimension) * 100)) / 100}%;
             height: ${(Math.floor((100/dimension) * 100)) / 100}%;`)
     });
-    const squares = document.querySelectorAll("div div");
     let shift = false;
     document.addEventListener("keydown", (event) => {
         if (event.key === "Shift") shift = true;
@@ -41,9 +54,9 @@ function drawGrid(dimension = 16) {
     document.addEventListener("keyup", (event) => {
         if (event.key === "Shift") shift = false;
     })
-    squares.forEach((square) => {
-        square.addEventListener("mouseenter", () => {
-            if (!shift) square.style.backgroundColor = colorSelector.value;
+    gridBoxes.forEach((gridBox) => {
+        gridBox.addEventListener("mouseenter", () => {
+            if (!shift) gridBox.style.backgroundColor = colorSelector.value;
         })
     })
 }

@@ -15,8 +15,17 @@ html {
     font-size: 1.2rem;
     margin: 8px auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+}
+
+.button-group {
+    width: 80vh;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
 }
 
 .container {
@@ -40,8 +49,4 @@ html {
 
 .color-selector {
     padding: 0 5px;
-}
-
-.grid-size {
-    margin-left: auto;
 }
